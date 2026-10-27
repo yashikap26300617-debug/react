@@ -1,56 +1,72 @@
 
-import { useState } from "react";
+import { useState } from 'react';
 
-function App() {
-  const [showMessage, setShowMessage] = useState(true);
-  const [count, setCount] = useState(0);
-  const [message, setMessage] = useState("");
+
+function LearnEvent() {
+  /*
+   * Normal - js - click
+   * React - js - onClick, onInput, onChange, onSubmit, onKeypress, onMouseover
+   */
+
+
   const [text, setText] = useState("");
 
 
-  function handleToggle() {
-    setShowMessage((prev) => !prev);
+  function handleClick() {
+    alert("Hello Everyone ");
   }
 
-  function handleIncrement() {
-    if ((count+1)%5!=0){
-      setCount((prev) => prev + 1);
-      setMessage("");
-    } else {
-      setCount((prev) => prev + 2);
-      setMessage("Skipped multiple of 5");
-    }
+
+  function handleChange(e) {
+    setText(e.target.value);
   }
 
-  function handleDecrement() {
-    if ((count-1)%5!=0){
-      setCount((prev) => prev - 1);
-      setMessage("");
-    } else {
-      setCount((prev) => prev - 2);
-      setMessage("Skipped multiple of 5");
-    }
 
-
-    // 1. What is State in React?
-// State is data that a component remembers and can change over time.
-// For example:
-// - A counter changing from 0 to 1.
-// - A button opening and closing a menu.
-// - A text box remembering what you type.
-// - A like button changing from 0 likes to 1 like.
-
-// 2. Why do we need State?
-// Look at this example:
-  let count = 0;
-
-   function handleClick() {
-    count = count + 1;
+  function handleClear() {
+    setText("");
   }
 
-// The variable count increases, but React does not automatically update the screen.
-// Why? Because changing a normal variable does not tell React to render the component again.
-// Solution: Use useState.
+
+  return (
+    <div>
+      {/* Click */}
+      <button onClick={handleClick}>ShowAlert</button>
+
+
+      {/* onChange */}
+      <input type="text" value={text} onChange={handleChange} />
+      <h1>{text}</h1>
+
+
+      <button onClick={handleClear}>ClearAll</button>
+    </div>
+  );
+}
+
+
+export default LearnEvent;
+
+// 1. What is an event?
+
+// An event is an action performed by the user, such as clicking a button, typing in a box, or submitting a form.
+// Examples:
+// - onClick — when a user clicks.
+// - onChange — when an input value changes.
+// - onSubmit — when a form is submitted.
+// - onMouseEnter — when the mouse moves over an element.
+
+// 2. What is an event handler?
+// An event handler is a function that runs when an event happens.
+function App() {
+  function handleClick() {
+    alert("Button clicked!");
+  }
+
+  return <button onClick={handleClick}>Click me</button>;
+}
+
+
+
 
 
 
