@@ -1,56 +1,56 @@
-import React from 'react'
-import ProductCard, { Greet } from "./call.jsx";
+
+import { useState } from "react";
 
 function App() {
-  return (
-    <div>
-      <h1>Hi, Harsshwadhan</h1>
-
-      <ProductCard title="Wireless Headphones" price={99} />
-      <ProductCard title="Mechanical Keyboard" price={149} />
-      <ProductCard title="Ergonomic Mouse" price={45} />
-
-      <Greet name="Harsshwardhan Chowdhary" squad={168} />
-      <Greet name="Naman" squad={169} />
-    </div>
-  )
-}
-
-export default App
-function Student(props) {
-  return <h1>{props.name}</h1>;
-}
-
-function App() {
-  return <Student name="Yashika" age={20} />;
-}
-
-Here:
-// - name and age are props (prop names).
-// - "Yashika" and 20 are their values.
-// - Student receives them inside the props object.
+  const [showMessage, setShowMessage] = useState(true);
+  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
+  const [text, setText] = useState("");
 
 
-// 1. What are Props?
-// Props are data passed from one React component to another.
-// 2. How to receive Props
+  function handleToggle() {
+    setShowMessage((prev) => !prev);
+  }
 
-// function ProfileCard({ name }) {
-//   return <h2>{name}</h2>;
-// }
-// function Student(props) {
-//   return <h1>{props.name}</h1>;
-// }
+  function handleIncrement() {
+    if ((count+1)%5!=0){
+      setCount((prev) => prev + 1);
+      setMessage("");
+    } else {
+      setCount((prev) => prev + 2);
+      setMessage("Skipped multiple of 5");
+    }
+  }
 
-// function App() {
-//   return <Student name="Yashika" age={20} />;
-// }
+  function handleDecrement() {
+    if ((count-1)%5!=0){
+      setCount((prev) => prev - 1);
+      setMessage("");
+    } else {
+      setCount((prev) => prev - 2);
+      setMessage("Skipped multiple of 5");
+    }
 
 
-// Here:
-// - name and age are props (prop names).
-// - "Yashika" and 20 are their values.
-// - Student receives them inside the props object.
+    // 1. What is State in React?
+// State is data that a component remembers and can change over time.
+// For example:
+// - A counter changing from 0 to 1.
+// - A button opening and closing a menu.
+// - A text box remembering what you type.
+// - A like button changing from 0 likes to 1 like.
+
+// 2. Why do we need State?
+// Look at this example:
+  let count = 0;
+
+   function handleClick() {
+    count = count + 1;
+  }
+
+// The variable count increases, but React does not automatically update the screen.
+// Why? Because changing a normal variable does not tell React to render the component again.
+// Solution: Use useState.
 
 
 
